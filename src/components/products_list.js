@@ -1,33 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ProductsContext } from "../contexts/products_context";
 
 function ProductsList() {
+  const { allProducts } = useContext(ProductsContext);
   return (
     <ul className="products-list">
-      <li>
-        <span className="product-name">Product A</span>
-        <span className="product-price">£ 10</span>
-        <button className="buy-btn">Buy</button>
-      </li>
-      <li>
-        <span className="product-name">Product B</span>
-        <span className="product-price">£ 10</span>
-        <button className="buy-btn">Buy</button>
-      </li>
-      <li>
-        <span className="product-name">Product C</span>
-        <span className="product-price">£ 10</span>
-        <button className="buy-btn">Buy</button>
-      </li>
-      <li>
-        <span className="product-name">Product D</span>
-        <span className="product-price">£ 10</span>
-        <button className="buy-btn">Buy</button>
-      </li>
-      <li>
-        <span className="product-name">Product E</span>
-        <span className="product-price">£ 10</span>
-        <button className="buy-btn">Buy</button>
-      </li>
+      {allProducts.map((product) => {
+        return (
+          <li key={product.id}>
+            <span className="product-name">{product.name}</span>
+            <span className="product-price">£ {product.price}</span>
+            <button className="buy-btn">Buy</button>
+          </li>
+        );
+      })}
     </ul>
   );
 }
