@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { BasketContext } from "../contexts/basket_context";
+import QtyController from "./qty_controller";
 
 function BasketList() {
   const { basket } = useContext(BasketContext);
@@ -10,7 +11,7 @@ function BasketList() {
           <li key={product.id}>
             <span className="product-name">{product.name}</span>
             <span className="product-price">£ {product.price}</span>
-            <button className="buy-btn">Remove</button>
+            <QtyController product={product} />
           </li>
         );
       })}
