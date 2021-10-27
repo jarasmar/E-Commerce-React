@@ -10,7 +10,7 @@ function BasketList() {
           <li key={product.id}>
             <span className="product-name">{product.name}</span>
             <span className="product-price">£ {product.price}</span>
-            <button className="buy-btn">Buy</button>
+            <button className="buy-btn">Remove</button>
           </li>
         );
       })}
