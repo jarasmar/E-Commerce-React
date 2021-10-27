@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 export const BasketContext = createContext();
 
@@ -16,15 +16,27 @@ const BasketContextProvider = (props) => {
   };
 
   const removeProduct = (product) => {
-    console.log("Removed " + product.name);
+    const updatedBasket = basket.filter((x) => {
+      return x !== product;
+    });
+    setBasket(updatedBasket);
   };
 
   const increaseQty = (product) => {
-    console.log("Plus 1 " + product.name);
+    basket[basket.indexOf(product)].qty += 1;
   };
+
   const decreaseQty = (product) => {
-    console.log("Minus 1 " + product.name);
+    if (basket[basket.indexOf(product)].qty === 1) {
+      return removeProduct(product);
+    } else {
+      basket[basket.indexOf(product)].qty -= 1;
+    }
   };
+
+  useEffect(() => {
+    return basket;
+  }, [basket]);
 
   return (
     <BasketContext.Provider
