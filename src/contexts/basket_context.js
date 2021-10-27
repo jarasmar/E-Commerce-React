@@ -23,14 +23,22 @@ const BasketContextProvider = (props) => {
   };
 
   const increaseQty = (product) => {
-    basket[basket.indexOf(product)].qty += 1;
+    setBasket((basket) =>
+      basket.map((item) =>
+        item.id === product.id ? { ...item, qty: item.qty + 1 } : item
+      )
+    );
   };
 
   const decreaseQty = (product) => {
     if (basket[basket.indexOf(product)].qty === 1) {
       return removeProduct(product);
     } else {
-      basket[basket.indexOf(product)].qty -= 1;
+      setBasket((basket) =>
+        basket.map((item) =>
+          item.id === product.id ? { ...item, qty: item.qty - 1 } : item
+        )
+      );
     }
   };
 
