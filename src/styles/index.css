@@ -8,6 +8,33 @@ body {
   font-family: sans-serif;
 }
 
+button,
+.button {
+  width: fit-content;
+  margin-top: 20px;
+  padding: 5px 10px;
+
+  font-size: 20px;
+  text-transform: uppercase;
+  background-color: #17005e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
 /* NAVIGATION */
 
 .nav {
@@ -77,10 +104,6 @@ body {
   padding-left: 0;
 }
 
-ul {
-  list-style: none;
-}
-
 ul li {
   margin: 10px;
   padding: 20px;
@@ -106,19 +129,6 @@ li .product-price {
   margin-top: 10px;
 }
 
-button {
-  width: fit-content;
-  margin-top: 20px;
-  padding: 5px 10px;
-
-  font-size: 20px;
-  text-transform: uppercase;
-  background-color: #17005e;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-}
-
 .products-list {
   display: flex;
   flex-wrap: wrap;
@@ -128,11 +138,49 @@ button {
   width: calc(50% - 20px);
 }
 
+.qty-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.qty-controller {
+  display: flex;
+  flex-direction: row;
+}
+
+.product-qty {
+  font-size: 20px;
+  padding: 5px 10px;
+  margin: 0 10px;
+  border: 2px solid #17005e;
+  border-radius: 3px;
+}
+
+.qty-btn {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.qty-btn:hover {
+  cursor: pointer;
+}
+
+button.remove-btn {
+  margin-top: 0;
+  font-size: 20px;
+  text-transform: none;
+  background-color: transparent;
+  color: #17005e;
+}
+
 .basket-list {
   width: 50%;
 }
 
-.checkout {
+.checkout-container {
   width: 40%;
   margin-top: 10px;
   padding: 20px;
@@ -152,7 +200,7 @@ button {
   margin-bottom: 20px;
 }
 
-.checkout-btn {
+button.checkout {
   align-self: center;
 }
 
@@ -162,7 +210,7 @@ button {
   height: calc(100vh - 265px);
   margin-top: 50px;
   margin-bottom: 215px;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 24px;
   background-color: #f2eeff;
 }
@@ -175,7 +223,8 @@ button {
   margin-bottom: 20px;
 }
 
-.page.home {
+.page.home,
+.page.thank-you {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -186,9 +235,8 @@ button {
   font-size: 60px;
   text-transform: uppercase;
   font-weight: 900;
-  color: #17005e;
 }
-.page.home .subtitle {
+button.home-btn {
   font-size: 30px;
   text-transform: uppercase;
   font-weight: 500;
@@ -198,13 +246,44 @@ button {
 
   background-color: #17005e;
   color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
 }
 
-.page.basket .content {
+.page.basket .full-basket {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+.page.basket .empty-basket-container,
+.page.thank-you .thank-you-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+
+  height: 40%;
+  width: 40%;
+
+  background-color: #fff;
+  border: 2px solid #17005e;
+  border-radius: 4px;
+  font-size: 30px;
+  color: #17005e;
+}
+
+.page.thank-you .thank-you-container {
+  height: auto;
+  padding: 20px;
+}
+
+ul.last-order-list {
+  font-size: 20px;
+  text-transform: lowercase;
+  padding: 20px 0;
+}
+
+ul.last-order-list li {
+  padding: 5px 0;
 }
