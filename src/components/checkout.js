@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { BasketContext } from "../contexts/basket_context";
 
 function Checkout() {
+  const { basket, items } = useContext(BasketContext);
+  let total = 0;
+  basket.forEach((item) => {
+    total += item.price * item.qty;
+  });
   return (
-    <div className="checkout">
-      <div className="checkout-items">2 Items</div>
-      <div className="checkout-total">Total: £ 20</div>
-      <button className="checkout-btn">Order Now</button>
+    <div className="checkout-container">
+      <div className="checkout-items">{items} Item(s)</div>
+      <div className="checkout-total">Total: £ {total}</div>
+      <Link to="" className="button checkout">
+        Order Now
+      </Link>
     </div>
   );
 }

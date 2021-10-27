@@ -200,7 +200,7 @@ button.remove-btn {
   margin-bottom: 20px;
 }
 
-button.checkout {
+a.checkout {
   align-self: center;
 }
 
@@ -236,7 +236,7 @@ button.checkout {
   text-transform: uppercase;
   font-weight: 900;
 }
-button.home-btn {
+.button.home-btn {
   font-size: 30px;
   text-transform: uppercase;
   font-weight: 500;
@@ -262,8 +262,9 @@ button.home-btn {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  padding: 20px;
+  text-align: center;
 
-  height: 40%;
   width: 40%;
 
   background-color: #fff;

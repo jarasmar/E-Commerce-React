@@ -5,7 +5,7 @@ function Home() {
   return (
     <div className="page home">
       <span className="title">El Campo de Olmo</span>
-      <Link to="/products" className="subtitle">
+      <Link to="/products" className="button home-btn">
         Organic Farm
       </Link>
     </div>
