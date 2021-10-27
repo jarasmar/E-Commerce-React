@@ -1,10 +1,11 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 
 export const BasketContext = createContext();
 
 const BasketContextProvider = (props) => {
   const [basket, setBasket] = useState([]);
   let [items, setItems] = useState(0);
+  const [purchased, setPurchased] = useState([]);
 
   const addProduct = (product) => {
     if (basket.indexOf(product) >= 0) {
@@ -48,19 +49,23 @@ const BasketContextProvider = (props) => {
     setItems((items -= 1));
   };
 
-  useEffect(() => {
-    return basket;
-  }, [basket]);
+  const checkout = () => {
+    setPurchased(basket);
+    setBasket([]);
+    setItems(0);
+  };
 
   return (
     <BasketContext.Provider
       value={{
         basket,
         items,
+        purchased,
         addProduct,
         removeProduct,
         increaseQty,
         decreaseQty,
+        checkout,
       }}
     >
       {props.children}

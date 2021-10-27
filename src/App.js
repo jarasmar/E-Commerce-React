@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Nav, Footer } from "./components";
-import { Home, Products, Basket } from "./pages";
+import { Home, Products, Basket, ThankYou } from "./pages";
 import { ProductsContextProvider, BasketContextProvider } from "./contexts";
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
               <Route path="/" exact component={() => <Home />} />
               <Route path="/products" exact component={() => <Products />} />
               <Route path="/basket" exact component={() => <Basket />} />
+              <Route path="/thankyou" exact component={() => <ThankYou />} />
             </Switch>
             <Footer />
           </Router>
