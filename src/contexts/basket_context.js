@@ -4,13 +4,16 @@ export const BasketContext = createContext();
 
 const BasketContextProvider = (props) => {
   const [basket, setBasket] = useState([]);
+  let [items, setItems] = useState(0);
 
   const addProduct = (product) => {
     if (basket.indexOf(product) >= 0) {
       basket[basket.indexOf(product)].qty += 1;
+      setItems((items += 1));
     } else {
       product.qty += 1;
       setBasket([...basket, product]);
+      setItems((items += 1));
     }
     console.log(basket);
   };
@@ -20,6 +23,7 @@ const BasketContextProvider = (props) => {
       return x !== product;
     });
     setBasket(updatedBasket);
+    setItems((items -= 1));
   };
 
   const increaseQty = (product) => {
@@ -28,6 +32,7 @@ const BasketContextProvider = (props) => {
         item.id === product.id ? { ...item, qty: item.qty + 1 } : item
       )
     );
+    setItems((items += 1));
   };
 
   const decreaseQty = (product) => {
@@ -40,6 +45,7 @@ const BasketContextProvider = (props) => {
         )
       );
     }
+    setItems((items -= 1));
   };
 
   useEffect(() => {
@@ -48,7 +54,14 @@ const BasketContextProvider = (props) => {
 
   return (
     <BasketContext.Provider
-      value={{ basket, addProduct, removeProduct, increaseQty, decreaseQty }}
+      value={{
+        basket,
+        items,
+        addProduct,
+        removeProduct,
+        increaseQty,
+        decreaseQty,
+      }}
     >
       {props.children}
     </BasketContext.Provider>
