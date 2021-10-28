@@ -17,7 +17,7 @@ function Basket() {
       ) : (
         <div className="empty-basket-container">
           <span>Your basket is empty</span>
-          <Link to="/products" className="button">
+          <Link to="/products" className="button empty-basket">
             Shop Here
           </Link>
         </div>
