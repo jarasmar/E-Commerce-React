@@ -1,8 +1,6 @@
 export const BasketReducer = (state, action) => {
   switch (action.type) {
     case "add": {
-      console.log(state);
-
       const alreadyInBasket =
         state.basket.filter((x) => x.id === action.product.id).length > 0;
 
@@ -11,6 +9,7 @@ export const BasketReducer = (state, action) => {
           basket: state.basket.map((x) =>
             x.id === action.product.id ? { ...x, qty: x.qty + 1 } : x
           ),
+          items: state.items + 1,
         };
       } else {
         return {
@@ -18,6 +17,7 @@ export const BasketReducer = (state, action) => {
             ...state.basket,
             { ...action.product, qty: action.product.qty + 1 },
           ],
+          items: state.items + 1,
         };
       }
     }
@@ -26,6 +26,7 @@ export const BasketReducer = (state, action) => {
         basket: state.basket.filter((x) => {
           return x !== action.product;
         }),
+        items: state.items - action.product.qty,
       };
     }
     case "increaseQty": {
@@ -33,6 +34,7 @@ export const BasketReducer = (state, action) => {
         basket: state.basket.map((x) =>
           x.id === action.product.id ? { ...x, qty: x.qty + 1 } : x
         ),
+        items: state.items + 1,
       };
     }
     case "decreaseQty": {
@@ -41,17 +43,19 @@ export const BasketReducer = (state, action) => {
           basket: state.basket.filter((x) => {
             return x !== action.product;
           }),
+          items: state.items - 1,
         };
       } else {
         return {
           basket: state.basket.map((x) =>
             x.id === action.product.id ? { ...x, qty: x.qty - 1 } : x
           ),
+          items: state.items - 1,
         };
       }
     }
     case "checkout": {
-      return (state.basket = []);
+      return { basket: [], items: 0 };
     }
     default: {
       return state;
