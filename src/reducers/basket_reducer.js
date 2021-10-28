@@ -55,7 +55,7 @@ export const BasketReducer = (state, action) => {
       }
     }
     case "checkout": {
-      return { basket: [], items: 0 };
+      return { basket: [], items: 0, purchased: state.basket };
     }
     default: {
       return state;

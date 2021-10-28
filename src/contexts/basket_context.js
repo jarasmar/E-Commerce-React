@@ -1,4 +1,4 @@
-import React, { createContext, useState, useReducer } from "react";
+import React, { createContext, useReducer } from "react";
 import { BasketReducer } from "../reducers/basket_reducer";
 
 export const BasketContext = createContext();
@@ -8,15 +8,13 @@ const BasketContextProvider = (props) => {
   const [state, dispatch] = useReducer(BasketReducer, {
     basket: [],
     items: 0,
+    purchased: [],
   });
-  //   let [items, setItems] = useState(0);
-  const [purchased, setPurchased] = useState([]);
 
   return (
     <BasketContext.Provider
       value={{
         state,
-        purchased,
         dispatch,
       }}
     >

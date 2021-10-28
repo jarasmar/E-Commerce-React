@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { BasketContext } from "../contexts/basket_context";
 
 function ThankYou(props) {
-  const { purchased } = useContext(BasketContext);
+  const { state } = useContext(BasketContext);
   let listPurchased = "";
 
-  if (purchased) {
-    listPurchased = purchased.map((item) => (
+  if (state.purchased) {
+    listPurchased = state.purchased.map((item) => (
       <li key={item.id}>
         {item.qty} x {item.name}
       </li>
