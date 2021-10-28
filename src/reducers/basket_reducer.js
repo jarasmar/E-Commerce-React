@@ -1,8 +1,13 @@
 export const BasketReducer = (state, action) => {
   switch (action.type) {
     case "add": {
-      if (state.indexOf(action.product) >= 0) {
-        return (state[state.indexOf(action.product)].qty += 1);
+      const alreadyInBasket =
+        state.filter((x) => x.id === action.product.id).length > 0;
+
+      if (alreadyInBasket) {
+        return state.map((x) =>
+          x.id === action.product.id ? { ...x, qty: x.qty + 1 } : x
+        );
       } else {
         return [...state, { ...action.product, qty: action.product.qty + 1 }];
       }
