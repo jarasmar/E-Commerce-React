@@ -31,6 +31,6 @@ This is a multi-page ecommerce website that has allowed me to put in practice th
 
 ### Project Setup
 
-- Clone repository: `git clone git@github.com:jarasmar/multi-page-react.git`
-- Jump into folder: `cd multi-page-react`
+- Clone repository: `git@github.com:jarasmar/E-Commerce-React.git`
+- Jump into folder: `cd E-Commerce-React`
 - Start server: `yarn start`
