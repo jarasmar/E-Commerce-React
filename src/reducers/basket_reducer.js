@@ -1,40 +1,57 @@
 export const BasketReducer = (state, action) => {
   switch (action.type) {
     case "add": {
+      console.log(state);
+
       const alreadyInBasket =
-        state.filter((x) => x.id === action.product.id).length > 0;
+        state.basket.filter((x) => x.id === action.product.id).length > 0;
 
       if (alreadyInBasket) {
-        return state.map((x) =>
-          x.id === action.product.id ? { ...x, qty: x.qty + 1 } : x
-        );
+        return {
+          basket: state.basket.map((x) =>
+            x.id === action.product.id ? { ...x, qty: x.qty + 1 } : x
+          ),
+        };
       } else {
-        return [...state, { ...action.product, qty: action.product.qty + 1 }];
+        return {
+          basket: [
+            ...state.basket,
+            { ...action.product, qty: action.product.qty + 1 },
+          ],
+        };
       }
     }
     case "remove": {
-      return state.filter((x) => {
-        return x !== action.product;
-      });
+      return {
+        basket: state.basket.filter((x) => {
+          return x !== action.product;
+        }),
+      };
     }
     case "increaseQty": {
-      return state.map((x) =>
-        x.id === action.product.id ? { ...x, qty: x.qty + 1 } : x
-      );
+      return {
+        basket: state.basket.map((x) =>
+          x.id === action.product.id ? { ...x, qty: x.qty + 1 } : x
+        ),
+      };
     }
     case "decreaseQty": {
       if (action.product.qty === 1) {
-        return state.filter((x) => {
-          return x !== action.product;
-        });
+        return {
+          basket: state.basket.filter((x) => {
+            return x !== action.product;
+          }),
+        };
       } else {
-        return state.map((x) =>
-          x.id === action.product.id ? { ...x, qty: x.qty - 1 } : x
-        );
+        return {
+          basket: state.basket.map((x) =>
+            x.id === action.product.id ? { ...x, qty: x.qty - 1 } : x
+          ),
+        };
       }
     }
     case "checkout": {
-      return (state = []);
+      return (state.basket = []);
     }
     default: {
       return state;

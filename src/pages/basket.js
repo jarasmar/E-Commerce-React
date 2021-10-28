@@ -5,11 +5,11 @@ import BasketList from "../components/basket_list";
 import Checkout from "../components/checkout";
 
 function Basket() {
-  const { basket } = useContext(BasketContext);
+  const { state } = useContext(BasketContext);
   return (
     <div className="page basket">
       <div className="header">Basket</div>
-      {basket.length ? (
+      {state.basket.length ? (
         <div className="full-basket">
           <BasketList />
           <Checkout />

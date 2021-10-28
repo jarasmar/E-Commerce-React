@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import { BasketContext } from "../contexts/basket_context";
 
 function Links() {
-  const { items } = useContext(BasketContext);
+  const { state } = useContext(BasketContext);
   return (
     <div className="links">
       <Link to="/">Home</Link>
       <Link to="/products">Products</Link>
-      <Link to="/basket">{items > 0 ? "(" + items + ") " : ""}Basket</Link>
+      <Link to="/basket">
+        {state.items > 0 ? "(" + state.items + ") " : ""}Basket
+      </Link>
     </div>
   );
 }
