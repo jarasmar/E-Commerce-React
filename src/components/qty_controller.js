@@ -2,21 +2,25 @@ import React, { useContext } from "react";
 import { BasketContext } from "../contexts/basket_context";
 
 function QtyController(props) {
-  const { increaseQty, decreaseQty, dispatch } = useContext(BasketContext);
+  const { dispatch } = useContext(BasketContext);
 
   return (
     <div className="qty-container">
       <div className="qty-controller">
         <div
           className="qty-btn minus"
-          onClick={() => decreaseQty(props.product)}
+          onClick={() =>
+            dispatch({ type: "decreaseQty", product: props.product })
+          }
         >
           -
         </div>
         <div className="product-qty">{props.product.qty}</div>
         <div
           className="qty-btn plus"
-          onClick={() => increaseQty(props.product)}
+          onClick={() =>
+            dispatch({ type: "increaseQty", product: props.product })
+          }
         >
           +
         </div>

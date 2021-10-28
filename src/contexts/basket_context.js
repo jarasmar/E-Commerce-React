@@ -9,28 +9,6 @@ const BasketContextProvider = (props) => {
   let [items, setItems] = useState(0);
   const [purchased, setPurchased] = useState([]);
 
-  //   const increaseQty = (product) => {
-  //     setBasket((basket) =>
-  //       basket.map((item) =>
-  //         item.id === product.id ? { ...item, qty: item.qty + 1 } : item
-  //       )
-  //     );
-  //     setItems((items += 1));
-  //   };
-
-  //   const decreaseQty = (product) => {
-  //     if (basket[basket.indexOf(product)].qty === 1) {
-  //       return removeProduct(product);
-  //     } else {
-  //       setBasket((basket) =>
-  //         basket.map((item) =>
-  //           item.id === product.id ? { ...item, qty: item.qty - 1 } : item
-  //         )
-  //       );
-  //     }
-  //     setItems((items -= 1));
-  //   };
-
   return (
     <BasketContext.Provider
       value={{
@@ -38,11 +16,6 @@ const BasketContextProvider = (props) => {
         items,
         purchased,
         dispatch,
-        // addProduct,
-        // removeProduct,
-        // increaseQty,
-        // decreaseQty,
-        // checkout,
       }}
     >
       {props.children}

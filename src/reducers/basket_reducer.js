@@ -17,6 +17,22 @@ export const BasketReducer = (state, action) => {
         return x !== action.product;
       });
     }
+    case "increaseQty": {
+      return state.map((x) =>
+        x.id === action.product.id ? { ...x, qty: x.qty + 1 } : x
+      );
+    }
+    case "decreaseQty": {
+      if (action.product.qty === 1) {
+        return state.filter((x) => {
+          return x !== action.product;
+        });
+      } else {
+        return state.map((x) =>
+          x.id === action.product.id ? { ...x, qty: x.qty - 1 } : x
+        );
+      }
+    }
     case "checkout": {
       return (state = []);
     }
@@ -25,29 +41,3 @@ export const BasketReducer = (state, action) => {
     }
   }
 };
-
-//   const addProduct = (product) => {
-//     if (basket.indexOf(product) >= 0) {
-//       basket[basket.indexOf(product)].qty += 1;
-//       setItems((items += 1));
-//     } else {
-//       product.qty += 1;
-//       setBasket([...basket, product]);
-//       setItems((items += 1));
-//     }
-//     console.log(basket);
-//   };
-
-//   const removeProduct = (product) => {
-//     const updatedBasket = basket.filter((x) => {
-//       return x !== product;
-//     });
-//     setBasket(updatedBasket);
-//     setItems((items -= 1));
-//   };
-
-//   const checkout = () => {
-//     setPurchased(basket);
-//     setBasket([]);
-//     setItems(0);
-//   };
