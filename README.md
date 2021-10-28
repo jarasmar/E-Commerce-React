@@ -1,8 +1,5 @@
 # React E-Commerce Practice
 
-![screenshot](./public/img/eco-screenshot-1)
-![screenshot](./public/img/eco-screenshot-2)
-
 This is a multi-page ecommerce website that has allowed me to put in practice the following React features:
 
 - Reducers: manage all the functionality and state of the components
@@ -10,6 +7,9 @@ This is a multi-page ecommerce website that has allowed me to put in practice th
 - Routing: create different pages in the same website
 - Hooks: use state in functional components
 - UseEffect: store data in LocalStorage with every state update
+
+![screenshot](./public/img/eco-screenshot-1.png)
+![screenshot](./public/img/eco-screenshot-2.png)
 
 ### What's In
 
